@@ -1,4 +1,5 @@
 node {
+
     def imageTag = "peterngtr/rest-demo:${env.BUILD_NUMBER}"
     def dockerHome = tool 'myDocker'
 
@@ -22,4 +23,6 @@ node {
             allure includeProperties: false, jdk: '', results: [[path: 'report']]
         }
     }
+
+
 }

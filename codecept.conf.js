@@ -5,7 +5,7 @@ const { setHeadlessWhen } = require('@codeceptjs/configure');
 setHeadlessWhen(process.env.HEADLESS);
 
 exports.config = {
-  tests: './*/*_test.ts',
+  tests: './tests/*_test.js',
   output: './output',
   helpers: {
     WebDriver: {
@@ -20,6 +20,7 @@ exports.config = {
   mocha: {},
   name: 'codeceptjs-jenkins',
   plugins: {
+    wdio: { enabled: true, services: ['selenium-standalone'] },
     pauseOnFail: {},
     retryFailedStep: {
       enabled: true
@@ -29,7 +30,6 @@ exports.config = {
     },
     screenshotOnFail: {
       enabled: true
-    },
-    wdio: { enabled: true, services: ['selenium-standalone'] }
+    }
   }
 }
