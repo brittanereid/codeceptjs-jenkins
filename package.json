@@ -1,0 +1,25 @@
+{
+  "name": "codeceptjs-jenkins",
+  "version": "1.0.0",
+  "description": "step 1: npm init -y  step 2: npm install codeceptjs webdriverio --save-dev  step 3: npx codeceptjs init  step 4: npm install @wdio/selenium-standalone-service --save-dev  step 5: wdio: {enabled: true,services: ['selenium-standalone']},  step 6: npx codeceptjs run   step 7: change chrome to firefox and run Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx codeceptjs run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NyranMoodie/codeceptjs-jenkins.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NyranMoodie/codeceptjs-jenkins/issues"
+  },
+  "homepage": "https://github.com/NyranMoodie/codeceptjs-jenkins#readme",
+  "devDependencies": {
+    "@wdio/selenium-standalone-service": "^6.11.0",
+    "codeceptjs": "^3.0.4",
+    "webdriverio": "^6.11.3"
+  }
+}
