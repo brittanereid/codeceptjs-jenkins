@@ -1,13 +1,13 @@
 pipeline {
     agent {
-        docker { image 'selenoid/vnc' }
+        docker { image 'selenium/standalone-chrome' }
     }
     stages {
         stage('Test') {
             steps {
                 sh 'node --version'
-                sh 'npm install'
-                sh 'npm run test'
+                // sh 'npm install'
+                // sh 'npm run test'
             }
         }
     }
