@@ -2,18 +2,10 @@ pipeline {
     agent {
         dockerfile true
     }
-    stages {
-          stage("Building Images") {
-              sh "docker build -t  -f docker/Dockerfile ."
-            }
-
         stage("Run Tests"){
             steps{
-                echo"Testing node"
-                nodejs("Nodejs"){
                     sh "npm install"
                     sh "npx codeceptjs run"
-                }
             }
         }
     }
