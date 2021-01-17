@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'node-java-chrome-e2e' }
+        docker { image 'minddocdev/node-java-chrome-e2e' }
     }
     stages {
         stage('Test') {
