@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'selenium/standalone-chrome'}
+        docker { image 'tenjaa/java-chrome-nodejs:latest'}
     }
     stages {
         stage('Test') {
