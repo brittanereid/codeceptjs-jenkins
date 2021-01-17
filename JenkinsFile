@@ -8,7 +8,7 @@ pipeline {
             echo"Testing node"
                 nodejs("Nodejs"){
                     sh "npm install"
-                    sh "npx codeceptjs run"
+                    sh "HEADLESS=true && npx codeceptjs run"
                 }
             }
         }
