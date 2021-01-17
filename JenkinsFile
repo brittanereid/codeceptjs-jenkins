@@ -2,10 +2,13 @@ pipeline {
     agent {
         dockerfile true
     }
+    stages {
         stage("Run Tests"){
             steps{
+                echo"Testing node"
                     sh "npm install"
-                    sh "npx codeceptjs run"
+                    sh "npx codeceptjs run"     
             }
         }
+    }
 }
