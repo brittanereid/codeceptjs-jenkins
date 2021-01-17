@@ -4,7 +4,6 @@ FROM peternguyentr/node-java-chrome:latest
 COPY codecept.conf.js /app/
 COPY package.json /app/
 COPY tests /app/tests
-COPY load-tests /app/load-tests
 COPY docker/run-tests.sh /app/docker/
 
 WORKDIR /app
