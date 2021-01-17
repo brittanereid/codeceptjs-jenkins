@@ -4,7 +4,8 @@
   "description": "step 1: npm init -y  step 2: npm install codeceptjs webdriverio --save-dev  step 3: npx codeceptjs init  step 4: npm install @wdio/selenium-standalone-service --save-dev  step 5: wdio: {enabled: true,services: ['selenium-standalone']},  step 6: npx codeceptjs run   step 7: change chrome to firefox and run Test",
   "main": "index.js",
   "scripts": {
-    "test": "npx codeceptjs run"
+    "test": "npx codeceptjs run",
+    "generate-report": "allure generate output"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,8 @@
   "devDependencies": {
     "@wdio/selenium-standalone-service": "^6.11.0",
     "codeceptjs": "^3.0.4",
-    "webdriverio": "^6.11.3"
+    "webdriverio": "^6.11.3",
+    "allure": "0.0.0",
+    "allure-commandline": "^2.13.0"
   }
 }

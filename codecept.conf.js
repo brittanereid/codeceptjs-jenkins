@@ -9,7 +9,6 @@ exports.config = {
   output: './output',
   helpers: {
     WebDriver: {
-      port: 4444,
       url: 'http://localhost',
       browser: 'chrome',
       windowSize: 'maximize',
@@ -28,6 +27,12 @@ exports.config = {
   name: 'codeceptjs-jenkins',
   plugins: {
     wdio: { enabled: true, services: ['selenium-standalone'] },
+    plugins: {
+      allure: {
+        outputDir: 'report',
+        enabled: true
+      }
+    },
     pauseOnFail: {},
     retryFailedStep: {
       enabled: true
