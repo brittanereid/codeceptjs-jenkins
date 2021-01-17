@@ -1,19 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        dockerfile true
+    }
     stages {
-        stage('Initialize'){
-            def dockerHome = tool 'myDocker'
-            env.PATH = "${dockerHome}/bin:${env.PATH}"
-        }
-        stage("Building Images") {
-         sh "docker build -t ${imageTag} -f Dockerfile"
-        }
         stage("Run Tests"){
-            steps{
-                echo"Testing node"
-                    sh "npm install"
-                    sh "npx codeceptjs run"     
-            }
+           echo"YEP"
         }
     }
 }
