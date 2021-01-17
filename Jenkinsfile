@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'atools/chrome-headless:java8-node12-latest' }
+        docker { image 'selenoid/vnc' }
     }
     stages {
         stage('Test') {
