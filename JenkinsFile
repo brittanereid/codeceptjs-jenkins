@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'selenium/node-chrome' }
+        docker { image 'selenium/standalone-chrome' }
     }
     stages {
         stage('Test') {

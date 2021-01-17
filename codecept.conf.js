@@ -9,8 +9,15 @@ exports.config = {
   output: './output',
   helpers: {
     WebDriver: {
+      port: 4444,
       url: 'http://localhost',
-      browser: 'chrome'
+      browser: 'chrome',
+      windowSize: 'maximize',
+      desiredCapabilities: {
+        chromeOptions: {
+          args: ["--headless"]
+        }
+      }
     }
   },
   include: {
