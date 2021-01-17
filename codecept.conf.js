@@ -10,7 +10,13 @@ exports.config = {
   helpers: {
     WebDriver: {
       url: 'http://localhost',
-      browser: 'chrome'
+      browser: 'chrome',
+      windowSize: 'maximize',
+      desiredCapabilities: {
+        chromeOptions: {
+          args: ["--headless"]
+        }
+      }
     }
   },
   include: {
