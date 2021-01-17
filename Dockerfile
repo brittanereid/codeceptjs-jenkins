@@ -1,5 +1,4 @@
 
-
 From selenium/standalone-chrome
 
 WORKDIR /tests

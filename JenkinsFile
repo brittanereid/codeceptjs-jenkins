@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'selenium/standalone-chrome' }
+        docker { image 'codeception/codeceptjs' }
     }
     stages {
         stage('Test') {
