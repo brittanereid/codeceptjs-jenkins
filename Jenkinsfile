@@ -5,9 +5,9 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
-                // sh 'npm install'
-                // sh 'npm run test'
+                 nodejs('Nodejs') {
+                      sh 'node --version'
+                }
             }
         }
     }
