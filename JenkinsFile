@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+    stages {
+        stage("Run Tests"){
+            steps{
+                echo"Testing node"
+                nodejs("Nodejs"){
+                    sh "npm install"
+                    sh "npx codeceptjs run"
+                }
+            }
+        }
+    }
+}
