@@ -9,7 +9,7 @@ exports.config = {
   output: './output',
   helpers: {
     WebDriver: {
-      url: 'http://localhost',
+      url: 'https://github.com',
       browser: 'chrome',
       windowSize: 'maximize',
       desiredCapabilities: {
