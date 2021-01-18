@@ -5,7 +5,7 @@ pipeline {
             steps {
                  nodejs('Nodejs') {
                       sh 'node -v'
-                      sh 'apt-get install libgobject-2.0.:i386'
+                      sh 'apt-get install chromium-browser'
                       sh 'npm install'
                       sh 'npm test'
                 }
