@@ -8,15 +8,10 @@ exports.config = {
   tests: './tests/*_test.js',
   output: './output',
   helpers: {
-    WebDriver: {
-      url: 'http://localhost',
-      browser: 'chrome',
-      windowSize: 'maximize',
-      desiredCapabilities: {
-        chromeOptions: {
-          args: ["--headless"]
-        }
-      }
+    Puppeteer: {
+      url: "http://localhost",
+      restart: false,
+      waitForAction: 500
     }
   },
   include: {
@@ -26,7 +21,6 @@ exports.config = {
   mocha: {},
   name: 'codeceptjs-jenkins',
   plugins: {
-    wdio: { enabled: true, services: ['selenium-standalone'] },
     pauseOnFail: {},
     retryFailedStep: {
       enabled: true
