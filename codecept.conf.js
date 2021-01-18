@@ -11,7 +11,8 @@ exports.config = {
     Puppeteer: {
       url: "http://localhost",
       restart: false,
-      waitForAction: 500
+      waitForAction: 500,
+      args: ["--no-sandbox"]
     }
   },
   include: {
