@@ -3,7 +3,7 @@ pipeline {
         docker { image 'atools/chrome-headless:java8-node12-latest' }
     }
     stages {
-        stage('Test') {
+        stage('Tesxt') {
             steps {
                 sh 'node -v'
                 sh 'npm install'
@@ -12,6 +12,3 @@ pipeline {
         }
     }
 }
-
-    // sh 'node -v'
-    //                   sh 'apt-get install chromium-browser'
