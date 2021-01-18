@@ -6,6 +6,8 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'node -v'
+                sh 'npm install'
+                sh 'npm test'
             }
         }
     }
@@ -13,5 +15,3 @@ pipeline {
 
     // sh 'node -v'
     //                   sh 'apt-get install chromium-browser'
-    //                   sh 'npm install'
-    //                   sh 'npm test'
