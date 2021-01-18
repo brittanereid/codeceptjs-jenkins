@@ -5,6 +5,8 @@ pipeline {
             steps {
                  nodejs('Nodejs') {
                       sh 'node -v'
+                      sh 'npm install'
+                      sh 'npm test'
                 }
             }
         }
