@@ -1,9 +1,9 @@
 pipeline {
     agent {
-        docker { image 'atools/chrome-headless:java8-node12-latest' }
+        docker { image 'buildkite/puppeteer' }
     }
     stages {
-        stage('Tesxt') {
+        stage('Test') {
             steps {
                 sh 'node -v'
                 sh 'npm install'
@@ -12,3 +12,6 @@ pipeline {
         }
     }
 }
+
+    // sh 'node -v'
+    //                   sh 'apt-get install chromium-browser'
