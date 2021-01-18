@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        docker { image 'buildkite/puppeteer' }
-    }
+    agent any
     stages {
         stage('Test') {
             steps {
