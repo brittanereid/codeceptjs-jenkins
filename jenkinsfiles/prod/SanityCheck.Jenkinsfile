@@ -2,13 +2,12 @@ pipeline {
     agent any
     
     environment {
-        IMAGE_NAME = 'qa_defaults'
-        CONTAINER_NAME = 'qa_defualts_dev';
+        IMAGE_NAME = 'qa_sanity_check_prod'
+        CONTAINER_NAME = 'qa_sanity_check_prod';
         SELENOID = 'selenoid'
-        QA_ENV = 'dev'
+        QA_ENV = 'prod'
         QA_OVERRIDE_ENV_PROMPT = 'true'
-        TAGS = '@SanityCheck'      
-
+        TAGS = '@SanityCheck'        
         // Slack configuration
         SLACK_COLOR_DANGER  = '#E01563'
         SLACK_COLOR_INFO    = '#6ECADC'
@@ -17,7 +16,7 @@ pipeline {
         SLACK_CHANNEL_1 = '#qa-ci'  
         SLACK_CHANNEL_2 = '#qa-ci'  
         SLACK_TEAM_DOMAIN = 'slack-team-domain'
-        SLACK_TOKEN = 'slack-token'
+        SLACK_TOKEN = 'slack-token'       
     }
 
     options {         
@@ -26,11 +25,10 @@ pipeline {
     }
     
     triggers {
-        cron('H 1-23/1 * * 1-5')
+        cron('H 7-16/4 * * 1-5')
     }
 
-    stages {                
-
+    stages {        
         stage('Print ENV') { steps { sh 'printenv' } }
         
         stage('Build') { steps { script { docker.build('$IMAGE_NAME:$BRANCH_NAME') } } }
@@ -66,7 +64,38 @@ pipeline {
             catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') { sh 'docker stop $CONTAINER_NAME-$BRANCH_NAME' }
             catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') { sh 'docker rm $CONTAINER_NAME-$BRANCH_NAME' }
             catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') { sh 'docker image rm $IMAGE_NAME:$BRANCH_NAME' }            
-        }        
+        }
+        // success {
+        //     echo "Sending message to Slack"
+        //     slackSend (color: "${env.SLACK_COLOR_GOOD}",
+        //          teamDomain: "${env.SLACK_TEAM_DOMAIN}",
+        //          token: "${env.SLACK_TOKEN}",
+        //          channel: "${params.SLACK_CHANNEL_1}",
+        //          message: "*SUCCESS:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.RUN_DISPLAY_URL}")
+        // }
+        // unstable {
+        //     echo "Sending message to Slack"
+        //     slackSend (color: "${env.SLACK_COLOR_DANGER}",
+        //          teamDomain: "${env.SLACK_TEAM_DOMAIN}",
+        //          token: "${env.SLACK_TOKEN}",
+        //          channel: "${params.SLACK_CHANNEL_2}",
+        //          message: "*UNSTABLE:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.RUN_DISPLAY_URL}")
+        // }
+        // failure {
+        //     echo "Sending message to Slack"
+        //     slackSend (color: "${env.SLACK_COLOR_DANGER}",
+        //          teamDomain: "${env.SLACK_TEAM_DOMAIN}",
+        //          token: "${env.SLACK_TOKEN}",
+        //          channel: "${params.SLACK_CHANNEL_2}",
+        //          message: "*FAILED:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.RUN_DISPLAY_URL}")
+        // }
+        // changed {
+        //     slackSend (color: "${env.SLACK_COLOR_INFO}",
+        //            teamDomain: "${env.SLACK_TEAM_DOMAIN}",
+        //            token: "${env.SLACK_TOKEN}",
+        //            channel: "${params.SLACK_CHANNEL_1}",
+        //            message: "*CHANGED:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.RUN_DISPLAY_URL}")
+        // }
         regression {
             echo "Sending message to Slack"
             slackSend (color: "${env.SLACK_COLOR_DANGER}",
