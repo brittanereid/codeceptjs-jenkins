@@ -3,6 +3,7 @@ pipeline {
     
     environment {
         IMAGE_NAME = 'qa_defaults'
+        BRANCH_NAME = 'qa_defaults'
         CONTAINER_NAME = 'qa_defualts_dev';
         SELENOID = 'selenoid'
         QA_ENV = 'dev'
