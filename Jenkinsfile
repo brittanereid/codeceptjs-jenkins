@@ -12,13 +12,13 @@ node {
         sh "docker build -t ${imageTag} -f docker/DockerFile ."
     }
 
-    stage("Running Tests") {
-        try {
-            sh "docker run --rm codecept"
-        }
-        finally {
+    // stage("Running Tests") {
+    //     try {
+    //         sh "docker run --rm codecept"
+    //     }
+    //     finally {
 
-        }
-    }
+    //     }
+    // }
   
 }
