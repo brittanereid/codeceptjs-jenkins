@@ -12,4 +12,4 @@ ONBUILD ADD . /app
 ONBUILD WORKDIR /app
 ONBUILD RUN npm install
 
-CMD ["/app/docker/run-test.sh"]
+CMD ["npx codeceptjs run"]
