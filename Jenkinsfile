@@ -9,7 +9,7 @@ node {
     }
 
     stage("Building Images") {
-        sh "docker build -t ${imageTag} -f docker/Dockerfile ."
+        sh "docker build -t ${imageTag} -f docker/DockerFile ."
     }
   
 }
