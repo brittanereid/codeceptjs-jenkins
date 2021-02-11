@@ -1,12 +1,10 @@
-pipeline {
-    agent {
-        docker { image 'atools/chrome-headless:java11-node14-latest' }
+node {
+     def dockerHome = tool 'myDocker'
+    stage("Initializing") {
+        cleanWs();
+        checkout scm;
+        sh 'git reset --hard'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
     }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-            }
-        }
-    }
+  
 }
