@@ -11,5 +11,14 @@ node {
     stage("Building Images") {
         sh "docker build -t ${imageTag} -f docker/DockerFile ."
     }
+
+    stage("Running Tests") {
+        try {
+            sh "jenkins/run-tests.sh ${env.BUILD_NUMBER}"
+        }
+        finally {
+
+        }
+    }
   
 }
