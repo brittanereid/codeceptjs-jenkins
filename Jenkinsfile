@@ -1,5 +1,5 @@
 node {
-    def imageTag = "codecept tests"
+    def imageTag = "codecept"
     def dockerHome = tool 'myDocker'
     stage("Initializing") {
         cleanWs();
@@ -11,4 +11,5 @@ node {
     stage("Building Images") {
         sh "docker build -t ${imageTag} -f docker/Dockerfile ."
     }
+  
 }
