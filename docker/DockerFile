@@ -7,7 +7,7 @@ COPY test /app/tests
 
 WORKDIR /app
 RUN npm install
-RUN npm codeceptjs run
+RUN npx codeceptjs run
 
 # ONBUILD ADD . /app
 # ONBUILD WORKDIR /app
